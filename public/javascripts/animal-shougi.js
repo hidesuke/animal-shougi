@@ -88,8 +88,7 @@ function hlLion(pieceId) {
 function id2co(tid) {
   var tempX = tid.charAt(1),
       tempY = tid.charAt(2);
-  var y = parseInt(tempY, 10) - 1, 
+  var y = parseInt(tempY, 10) - 1,  
       x = tempX === 'A' ? 0 : tempX === 'B' ? 1 : 2;
-  return {x : x, y : y}    
+  return {x : x, y : y}                                                                
 }
-
