@@ -12,12 +12,12 @@ socket.on('connect', function() {
     // 現在の盤面
     var i, j;
     var currentBoard = data.board;
-    for (i = 0; i < 3; i++) {
-      for (j = 0; j < 4; j++){
+    for (i = 0; i < 4; i++) {
+      for (j = 0; j < 3; j++){
+          var temp = i + 1;
+          var boardIndex = "#" + columnIndexArray[j] + temp;
         if(currentBoard[i][j]) {
           var piece = currentBoard[i][j];
-          var temp = j + 1;
-          var boardIndex = "#" + columnIndexArray[i] + temp;
           var pieceKind = piece.charAt(1);
           var pieceClass, pieceName;
           switch(pieceKind){
@@ -45,6 +45,9 @@ socket.on('connect', function() {
             break;
           }
           $(boardIndex).html('<div class="' + pieceClass + '">' + pieceName + '</div>');
+        } else {
+          $(boardIndex).html('');
+        
         }
       }
     }
@@ -73,7 +76,6 @@ var loginName = "";
 
 function init(){
   setEvent();
-  initBoard();
 }
 
 // setEvent
