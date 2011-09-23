@@ -52,7 +52,7 @@ socket.on('connect', function() {
       }
     }
     
-    // どっちの手番かを取得して表示してね
+    // TODO:どっちの手番かを取得して表示してね
     var currentTurn = data.turn;
   });
 
