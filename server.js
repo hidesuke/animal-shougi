@@ -52,6 +52,14 @@ console.log("Express server listening on port %d in %s mode", app.address().port
 io.sockets.on('connection', function(socket) {
   socket.on('login', function() {
   });
+  socket.on('sitdown', function(){
+  });
+  socket.on('message_send', function(data) {
+  });
+  socket.on('turn', function(data) {
+  });
+  socket.on('resign',function(data){
+  });
 });
 
 
