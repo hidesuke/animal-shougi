@@ -8,7 +8,8 @@ var socket = io.connect('http://' + location.host);
 var columnIndexArray = ['a', 'b', 'c'];
 var currentBoard;
 var pieceOwner;
-var myName = null;
+var myName = null,
+    myTurn = null;
 
 
 socket.on('connect', function() {
@@ -74,9 +75,11 @@ function init(){
 function setEvent(){
   $('#login').click(login);
   $('#sitDownFirst').click(function(){
+    myTurn = 1;
     sitDown('first');
   });
   $('#sitDownSecond').click(function(){
+    myTurn = 2;
     sitDown('second');
   });
 
