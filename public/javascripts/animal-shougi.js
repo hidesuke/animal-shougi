@@ -71,13 +71,13 @@ function pieceClick(event){
     hlLion(pieceId);
     break;
   case "giraffe":
+    hlGiraffe(pieceId);
     break;
   case "elephant":
     break;
   case "chick":
     break;
   case "pollo":
-    hlPollo(pieceId);
     break;
   default :
     break;
@@ -87,7 +87,7 @@ function pieceClick(event){
 
 function highLight(boardIndex){
   console.log('highLight:' + boardIndex);
-  $(boardIndex).css('border-color', '#FF0000');
+  $("#" + boardIndex).css('border-color', '#FF0000');
 }
 
 function hlLion(pieceId) {
@@ -155,6 +155,28 @@ function hlPollo(pieceId) {
     var tempId = co2id(candidates[i].x, candidates[i].y);
     $(tempId).css("border", "solid 4px red");
   }  
+}
+
+function hlGiraffe(pieceId) {
+  var coordinate = id2co(pieceId);
+  var candidates = [];
+  if( coordinate.x - 1 >= 0 ) {
+    candidates.push({x : coordinate.x - 1, y : coordinate.y});
+  }
+  if( coordinate.x + 1 < 4 ) {
+    candidates.push({x : coordinate.x + 1, y : coordinate.y});
+  }
+  if( coordinate.y - 1 >= 0 ) {
+    candidates.push({x : coordinate.x, y : coordinate.y - 1}); 
+  }
+  if( coordinate.y + 1 < 4 ) {
+    candidates.push({x : coordinate.x, y : coordinate.y + 1}); 
+  }
+  var len = candidates.length, i;
+  for(i = 0; i < len; i++){
+    var tempId = co2id(candidates[i].x, candidates[i].y);
+    $(tempId).css("border", "solid 4px red");
+  }
 }
 
 function id2co(tid) {
