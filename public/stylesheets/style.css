@@ -34,23 +34,33 @@ table#board {
 }
 
 .lion {
-  background-color : #ff69b4;  
+  background-color : #ff69b4;
+  width : 100px;
+  height : 100px;  
 }
 
 .giraffe {
   background-color : #9370db;  
+  width : 100px;
+  height : 100px;  
 }
 
 .elephant {
   background-color : #7b68ee;  
+  width : 100px;
+  height : 100px;  
 }
 
 .chick {
   background-color : #98fb98;  
+  width : 100px;
+  height : 100px;  
 }
 
 .pollo {
   background-color : #f0e68c;  
+  width : 100px;
+  height : 100px;  
 }
 
 
