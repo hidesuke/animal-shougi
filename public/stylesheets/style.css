@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+table#board {
+  table-layout : fixed;
+}
+
+.cell {
+  width  : 100px;
+  height : 100px;
+  border : solid 1px #000000;  
+}
+
+
+
+
