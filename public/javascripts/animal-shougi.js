@@ -7,7 +7,6 @@ function updateBoard(){
       if(currentBoard[i][j]) {
         var piece = currentBoard[i][j];
         var pieceKind = piece.charAt(1);
-        //var pieceKind = 'P';
         var pieceClass, pieceName;
         switch(pieceKind){
         case 'L' :
@@ -127,9 +126,14 @@ function hlLion(pieceId) {
 
 function hlPollo(pieceId) {
   var coordinate = id2co(pieceId);  
-  var move = [[-1,-1], [0, -1], [1, -1], [-1, 0], [1, 0], [0, 1]];
+  var move; // 動き方
   var candidates = [];
- 
+  if(pieceOwner[coordinate.y][coordinate.x] == 1){ 
+    move = [[-1,-1], [0, -1], [1, -1], [-1, 0], [1, 0], [0, 1]];
+  }else if(pieceOwner[coordinate.y][coordinate.x] == 2){
+    move = [[-1,1], [0, 1], [1, 1], [-1, 0], [1, 0], [0, -1]];
+  }
+
   // 自分自身のハイライト
   highLight(pieceId);
 
@@ -144,16 +148,13 @@ function hlPollo(pieceId) {
     }
     
     candidates.push({x : mx, y : my});
-
   }
+
+  // 候補のセルをハイライト
   for (var i = 0; i < candidates.length ; i++){
     var tempId = co2id(candidates[i].x, candidates[i].y);
     $(tempId).css("border", "solid 4px red");
   }  
-//  if(pieceOwner[coordinate.y][coordinate.x] == 1){ 
-//
-//  }else if(pieceOwner[coordinate.y][coordinate.x] == 2){
-//  }
 }
 
 function id2co(tid) {
