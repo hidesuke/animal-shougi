@@ -33,12 +33,7 @@ function updateBoard(){
           break;
         }
         $(boardIndex).html('<div class="' + pieceClass + '">' + pieceName + '</div>');
-        $(boardIndex).click(function(){
-            var id = $(this).attr('id');
-            var pClass = $(this).attr('class');
-            pieceClick(id, pClass);
-        });
-         
+        $(boardIndex).bind('click', [boardIndex, pieceClass], pieceClick); 
       } else {
         $(boardIndex).html('');
         $(boardIndex).click();
@@ -61,9 +56,25 @@ function updateOwner(){
   }
 }
 
-function pieceClick(boardIndex, pClass){
-  highLight(boardIndex);
+function pieceClick(event){
+  var pieceId    = event.data[0],
+      pieceClass = event.data[1];
+  switch(pieceClass) {
+  case "lion" :
+    break;
+  case "giraffe":
+    break;
+  case "elephant":
+    break;
+  case "chick":
+    break;
+  case "pollo":
+    break;
+  default :
+    break;
+  }
 }
+
 
 function highLight(boardIndex){
   console.log('highLight:' + boardIndex);
