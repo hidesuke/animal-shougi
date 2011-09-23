@@ -77,3 +77,15 @@ function highLight(boardIndex){
   $("#" + boardIndex).css('border-color', '#FF0000');
 }
 
+function hlLion(pieceId) {
+  var coordinate = id2co(pieceId);  
+}
+
+function id2co(tid) {
+  var tempX = tid.charAt(1),
+      tempY = tid.charAt(2);
+  var y = parseInt(tempY, 10), 
+      x = tempX === 'A' ? 0 : tempX === 'B' ? 1 : 2;
+  return {x : x, y : y}    
+}
+
