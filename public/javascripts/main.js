@@ -24,3 +24,25 @@ socket.on('connect', function() {
   });
 });
 
+
+// ----------------------------------------------
+// init 
+var loginName = "";
+
+function init(){
+  setEvent();
+}
+
+// setEvent
+function setEvent(){
+  $('#login').click(login);
+} 
+
+// login
+function login(){
+  loginName = $('#loginName').val();
+  if(loginName == ''){
+    alert('Name is Empty!');
+  }
+  socket.emit('login', {name : loginName}); 
+}
