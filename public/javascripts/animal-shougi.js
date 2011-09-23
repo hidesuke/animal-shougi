@@ -85,6 +85,9 @@ function pieceClick(event){
   default :
     break;
   }
+
+  // ハイライト解除イベントを追加
+  $(pieceId).click(resetHighLight);
 }
 
 
@@ -251,7 +254,18 @@ function hlElephant(pieceId){
     }
   } 
 }
-   
+
+function resetHighLight(){
+  var i, j;
+  for (i = 0; i < 4; i++) {
+    for (j = 0; j < 3; j++){
+      $(co2id(j, i)).css("border", "solid 1px black");
+    }
+  }
+
+  updateBoard();
+}
+
 function id2co(tid) {
   var tempX = tid.charAt(1),
       tempY = tid.charAt(2);
