@@ -120,7 +120,6 @@ function hlLion(pieceId) {
   var len = candidates.length, i;
   for(i = 0; i < len; i++) {
     var tempId = co2id(candidates[i].x, candidates[i].y);
-    console.log(tempId);
     $(tempId).css("border", "solid 4px red");
   }
 }
@@ -164,7 +163,7 @@ function id2co(tid) {
 }
 
 function co2id(x, y) {
-  var column = x === 0 ? 'a' : column === 1 ? 'b' : 'c';
+  var column = x === 0 ? 'a' : x === 1 ? 'b' : 'c';
   var row = y + 1;
   return "#" + column + row;
 }
