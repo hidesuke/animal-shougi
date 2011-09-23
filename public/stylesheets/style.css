@@ -1,14 +1,14 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 header {
   top : 0px;  
 }
 
 footer {
   clear : both;
-  bottom : 0px;  
+  bottom : 0px;
+  background-color : #000000;
+  color : #ffffff;
+  width : 100%;
+  position : fixed;  
 }
 
 a {
@@ -18,6 +18,18 @@ a {
 table#board {
   table-layout : fixed;
   float : left;
+}
+
+div#first_player_pane {
+  float : left;
+}
+
+div#second_player_pane {
+  float : left;
+}
+
+.name {
+  background-color : #6495ed;
 }
 
 .cell {
@@ -30,7 +42,6 @@ table#board {
   width : 110px;
   height : 500px;
   background-color : lightgray;
-  float : left;  
 }
 
 .lion {
