@@ -74,6 +74,7 @@ function pieceClick(event){
     hlGiraffe(pieceId);
     break;
   case "elephant":
+    hlElephant(pieceId);
     break;
   case "chick":
     hlChick(pieceId);
@@ -88,7 +89,7 @@ function pieceClick(event){
 
 
 function highLight(boardIndex){
-  console.log('highLight:' + boardIndex);
+//  console.log('highLight:' + boardIndex);
   $(boardIndex).css('border-color', '#FF0000');
 }
 
@@ -213,7 +214,34 @@ function hlChick(pieceId) {
     $(tempId).css("border", "solid 4px red");
   } 
 }
+function hlElephant(pieceId){
+  var coordinate = id2co(pieceId);  
+  var move = [[-1,-1], [1, -1], [1, 1], [-1, 1]]; // 動き方
+  var candidates = [];
 
+  // 自分自身のハイライト
+  highLight(pieceId);
+
+  // Check
+  for (var i = 0; i < move.length ; i++){
+    var m = move[i],
+        mx = coordinate.x + m[0],
+        my = coordinate.y + m[1];
+
+    if(mx < 0 || mx > 2 || my < 0 || my > 3){
+      continue;
+    }
+    
+    candidates.push({x : mx, y : my});
+  }
+
+  // 候補のセルをハイライト
+  for (var i = 0; i < candidates.length ; i++){
+    var tempId = co2id(candidates[i].x, candidates[i].y);
+    $(tempId).css("border", "solid 4px red");
+  } 
+}
+   
 function id2co(tid) {
   var tempX = tid.charAt(1),
       tempY = tid.charAt(2);
