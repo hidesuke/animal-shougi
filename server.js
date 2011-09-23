@@ -85,9 +85,6 @@ io.sockets.on('connection', function(socket) {
     if(data.turn == 'first') {
       socket.get('loginName', function(err, name) {
         firstPlayer = name;
-        console.log('get.name:' + firstPlayer);
-        //console.log('get.name:' + name);
-        broadcastBoard();
       });
     } else if (data.turn == 'second') {
       socket.get('loginName', function(err, name) {

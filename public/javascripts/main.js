@@ -6,51 +6,15 @@
 // Websocket Process
 var socket = io.connect('http://' + location.host);
 var columnIndexArray = ['a', 'b', 'c'];
+var currentBoard;
 
 socket.on('connect', function() {
   socket.on('board', function(data){
     // 現在の盤面
-    var i, j;
-    var currentBoard = data.board;
-    for (i = 0; i < 4; i++) {
-      for (j = 0; j < 3; j++){
-          var temp = i + 1;
-          var boardIndex = "#" + columnIndexArray[j] + temp;
-        if(currentBoard[i][j]) {
-          var piece = currentBoard[i][j];
-          var pieceKind = piece.charAt(1);
-          var pieceClass, pieceName;
-          switch(pieceKind){
-          case 'L' :
-            pieceClass = "lion";
-            pieceName = "獅";
-            break;
-          case 'E' :
-            pieceClass = "elephant";
-            pieceName = "象";
-            break;
-          case 'G' :
-            pieceClass = "giraffe"
-            pieceName = "馬";
-            break;
-          case 'C' :
-            pieceClass = "chick";
-            pieceName = "雛";
-            break;
-          case 'P' :
-            pieceClass = "pollo";
-            pieceName = "鶏";
-            break;
-          default :
-            break;
-          }
-          $(boardIndex).html('<div class="' + pieceClass + '">' + pieceName + '</div>');
-        } else {
-          $(boardIndex).html('');
-        
-        }
-      }
-    }
+    currentBoard = data.board;
+
+    // drawCell and set Event
+    updateBoard();
 
     // Set Name
     setUserName(data.first, data.second); 
