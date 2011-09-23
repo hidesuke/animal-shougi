@@ -33,7 +33,25 @@ table#board {
   float : left;  
 }
 
+.lion {
+  background-color : #ff69b4;  
+}
 
+.giraffe {
+  background-color : #9370db;  
+}
+
+.elephant {
+  background-color : #7b68ee;  
+}
+
+.chick {
+  background-color : #98fb98;  
+}
+
+.pollo {
+  background-color : #f0e68c;  
+}
 
 
 
