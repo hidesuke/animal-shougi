@@ -81,6 +81,7 @@ io.sockets.on('connection', function(socket) {
   });
   
   socket.on('sitdown', function(data) {
+    socket.set('turn', data.turn, null);
     if(data.turn == 'first') {
       socket.get('loginName', function(err, name) {
         firstPlayer = name;
@@ -110,8 +111,29 @@ io.sockets.on('connection', function(socket) {
   socket.on('message_send', function(data) {
   });
   socket.on('turn', function(data) {
+    // TODO : boardのupdate
+    var nextPlayer = data.turn === 'first' ? 'second' : 'first';
+    io.sockets.emit('turn', {
+      turn : nextPlayer,
+      point : data.point
+    });
+    // TODO:resultを返す
   });
-  socket.on('resign',function(data){
+  
+  socket.on('resign', function() {
+    var looser, myturn;
+    socket.get('loginName', function(err, name) {
+      looser = name; 
+    });
+    socket.get('turn', function(err, turn) {
+      myturn = turn; 
+    });
+    turn = null;
+    io.sockets.emit('result', {
+      board : board,
+      winner : myturn === 'first' ? 'second' : 'first',
+      turn : turn
+    });
   });
 });
 
