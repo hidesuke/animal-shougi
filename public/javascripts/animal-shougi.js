@@ -76,10 +76,10 @@ function pieceClick(event){
   case "elephant":
     break;
   case "chick":
-    hiChick(pieceId);
+    hlChick(pieceId);
     break;
   case "pollo":
-    hiPollo(pieceId);
+    hlPollo(pieceId);
     break;
   default :
     break;
@@ -181,7 +181,7 @@ function hlGiraffe(pieceId) {
   }
 }
 
-function hiChick(pieceId) {
+function hlChick(pieceId) {
   var coordinate = id2co(pieceId);  
   var move; // 動き方
   var candidates = [];
