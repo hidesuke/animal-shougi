@@ -37,7 +37,7 @@ app.get('/', function(req, res){
   });
 });
 
-if (app.setting.env === 'production') {
+if (app.settings.env === 'production') {
   app.listen(80);
 } else {
   app.listen(3000);
