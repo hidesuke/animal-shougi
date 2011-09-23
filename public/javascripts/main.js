@@ -30,6 +30,10 @@ socket.on('connect', function() {
       $('#sitDownSecond').css('display', 'none');
       $('#name_second').html("後手 : " + data.second);
     }
+    if (myTurn) {
+      $('#sitDownFirst').css('display', 'none');
+      $('#sitDownSecond').css('display', 'none');
+    }
     
     // 現在の盤面
     currentBoard = data.board;
