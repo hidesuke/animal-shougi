@@ -69,6 +69,7 @@ function pieceClick(event){
       pieceClass = event.data[1];
   switch(pieceClass) {
   case "lion" :
+    hlLion(pieceId);
     break;
   case "giraffe":
     break;
@@ -90,13 +91,50 @@ function highLight(boardIndex){
 }
 
 function hlLion(pieceId) {
-  var coordinate = id2co(pieceId);  
+  var coordinate = id2co(pieceId);
+  var candidates = [];
+  if(coordinate.x - 1 >= 0) {
+    candidates.push({x : coordinate.x - 1, y : coordinate.y});
+    if (coordinate.y - 1 >= 0) {
+      candidates.push({x : coordinate.x - 1, y : coordinate.y - 1}); 
+    }
+    if (coordinate.y + 1 < 4) {
+      candidates.push({x : coordinate.x - 1, y : coordinate.y + 1}); 
+    }
+  }
+  if (coordinate.x + 1 < 3) {
+    candidates.push({x : coordinate.x + 1, y : coordinate.y});
+    if (coordinate.y - 1 >= 0) {
+      candidates.push({x : coordinate.x + 1, y : coordinate.y - 1}); 
+    }
+    if (coordinate.y + 1 < 4) {
+      candidates.push({x : coordinate.x + 1, y : coordinate.y + 1}); 
+    }
+  }
+  if (coordinate.y - 1 >= 0) {
+    candidates.push({x : coordinate.x, y : coordinate.y - 1}); 
+  }
+  if (coordinate.y + 1 < 4) {
+    candidates.push({x : coordinate.x, y : coordinate.y + 1}); 
+  }
+  var len = candidates.length, i;
+  for(i = 0; i < len; i++) {
+    var tempId = co2id(candidates[i].x, candidates[i].y);
+    console.log(tempId);
+    $(tempId).css("border", "solid 4px red");
+  }
 }
 
 function id2co(tid) {
   var tempX = tid.charAt(1),
       tempY = tid.charAt(2);
   var y = parseInt(tempY, 10) - 1,  
-      x = tempX === 'A' ? 0 : tempX === 'B' ? 1 : 2;
+      x = tempX === 'a' ? 0 : tempX === 'b' ? 1 : 2;
   return {x : x, y : y}                                                                
+}
+
+function co2id(x, y) {
+  var column = x === 0 ? 'a' : column === 1 ? 'b' : 'c';
+  var row = y + 1;
+  return "#" + column + row;
 }
