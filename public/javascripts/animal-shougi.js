@@ -34,12 +34,12 @@ function updateBoard(){
           break;
         }
         $(boardIndex).html('<div class="' + pieceClass + '">' + pieceName + '</div>');
-
-        // Set Click Event
         $(boardIndex).click(function(){
-          clickPiece(pieceKind, pieceTurn);
+            var id = $(this).attr('id');
+            var pClass = $(this).attr('class');
+            pieceClick(id, pClass);
         });
-  
+         
       } else {
         $(boardIndex).html('');
         $(boardIndex).click();
@@ -48,6 +48,12 @@ function updateBoard(){
   }
 }
 
-function clickPiece(kind, turn){
-  alert(kind + turn);
+function pieceClick(boardIndex, pClass){
+  highLight(boardIndex);
 }
+
+function highLight(boardIndex){
+  console.log('highLight:' + boardIndex);
+  $("#" + boardIndex).css('border-color', '#FF0000');
+}
+
