@@ -7,7 +7,6 @@ function updateBoard(){
       if(currentBoard[i][j]) {
         var piece = currentBoard[i][j];
         var pieceKind = piece.charAt(1);
-        var pieceTurn = piece.charAt(0);
         var pieceClass, pieceName;
         switch(pieceKind){
         case 'L' :
@@ -43,6 +42,20 @@ function updateBoard(){
       } else {
         $(boardIndex).html('');
         $(boardIndex).click();
+      }
+    }
+  }
+}
+
+function updateOwner(){
+  var i, j;
+  for (i = 0; i < 4; i++) {
+    for (j = 0; j < 3; j++){
+      if(currentBoard[i][j]) {
+        var piece = currentBoard[i][j];
+        pieceOwner[i][j] = piece.charAt(0);
+      }else{
+        pieceOwner[i][j] = null;
       }
     }
   }

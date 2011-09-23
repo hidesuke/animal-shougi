@@ -7,6 +7,7 @@
 var socket = io.connect('http://' + location.host);
 var columnIndexArray = ['a', 'b', 'c'];
 var currentBoard;
+var pieceOwner;
 var myName = null;
 
 
@@ -34,6 +35,7 @@ socket.on('connect', function() {
 
     // drawCell and set Event
     updateBoard();
+    updateOwner();
 
     // TODO:どっちの手番かを取得して表示してね
     var currentTurn = data.turn;
@@ -59,7 +61,14 @@ var loginName = "";
 
 function init(){
   setEvent();
-}
+
+  pieceOwner = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ];
+}  
 
 // setEvent
 function setEvent(){
