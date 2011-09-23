@@ -112,13 +112,18 @@ io.sockets.on('connection', function(socket) {
   });
   
   socket.on('turn', function(data) {
-    // TODO : boardのupdate
+    // boardのupdate
+    var prev = transrateKifuToIndex(data.prev);
+    var next = transrateKifuToIndex(data.current);
+    var piece = board[prev.x][prev.y];
+    board[prev.x][prev.y] = null;
+    board[next.x][next.y] = piece;
+    // 手番の確定
     var nextPlayer = data.turn === 'first' ? 'second' : 'first';
     io.sockets.emit('turn', {
       turn : nextPlayer,
       point : data.point
     });
-    // TODO:resultを返す
   });
   
   socket.on('resign', function() {
@@ -138,5 +143,18 @@ io.sockets.on('connection', function(socket) {
   });
 });
 
-
+function transrateKifuToIndex(orig) {
+  var column = orig.charAt(0),
+      row    = orig.charAt(1);
+  var cIndex, rIndex;    
+  if ( column === "A" ) {
+     cIndex = 0;
+  } else if ( tempColumn === "B" ) {
+    cIndex = 1; 
+  } else {
+    cIndex = 2;
+  }
+  rIndex = parseInt(row, 10) - 1;
+  return {x : cIndex, y : rIndex};
+}
 
