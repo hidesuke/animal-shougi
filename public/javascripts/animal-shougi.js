@@ -48,10 +48,18 @@ function updateOwner(){
     for (j = 0; j < 3; j++){
       if(currentBoard[i][j]) {
         var piece = currentBoard[i][j];
-        pieceOwner[i][j] = piece.charAt(0);
+        switch(piece.charAt(0)){
+          case 'f' : 
+            pieceOwner[i][j] = 1;
+            break;
+          case 's' :
+            pieceOwner[i][j] = 2;
+            break;
+        }
       }else{
-        pieceOwner[i][j] = null;
+        pieceOwner[i][j] = 0;
       }
+      console.log(pieceOwner[i][j]);
     }
   }
 }
