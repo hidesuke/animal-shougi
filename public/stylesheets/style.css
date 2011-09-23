@@ -1,6 +1,14 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header {
+  top : 0px;  
+}
+
+footer {
+  clear : both;
+  bottom : 0px;  
 }
 
 a {
@@ -9,6 +17,7 @@ a {
 
 table#board {
   table-layout : fixed;
+  float : left;
 }
 
 .cell {
@@ -16,6 +25,14 @@ table#board {
   height : 100px;
   border : solid 1px #000000;  
 }
+
+.captive {
+  width : 110px;
+  height : 500px;
+  background-color : lightgray;
+  float : left;  
+}
+
 
 
 
