@@ -4,11 +4,11 @@
 
 // ----------------------------------------------
 // Websocket Process
-var socket = io.connect('http:/' + location.host);
+var socket = io.connect('http://' + location.host);
 
 socket.on('connect', function() {
   socket.on('board', function(){
-    //
+    alert('Debug : socket.on board'); 
   });
 
   socket.on('result', function(){

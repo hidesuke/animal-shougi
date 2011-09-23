@@ -45,12 +45,34 @@ if (app.settings.env === 'production') {
 
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 
+// -------------------------------------------------------
+// Game Init
+var board = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];
+
+var turn = null;
 
 // -------------------------------------------------------
 // WebSocket
 
 io.sockets.on('connection', function(socket) {
-  socket.on('login', function() {
+  console.log('connected');
+
+  socket.on('login', function(data) {
+    console.log('logined:' + data.name);
+
+    // Set Login Name
+    socket.set('loginName', data.name, null);
+
+    // Emit Board
+    io.sockets.emit('board', {
+      board : board,
+      turn : turn 
+    });
   });
   socket.on('sitdown', function(){
   });
