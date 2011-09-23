@@ -8,5 +8,18 @@ function initBoard() {
   $('#b4').html('<div class="lion">獅</div>');
   $('#c4').html('<div class="giraffe">馬</div>');
 }
+/*
+function setBoardEvent(){
+  $('#a1').click();
+  $('#b1').click();
+  $('#c1').click();
+  $('#b2').click();
+  $('#b3').click();
+  $('#a4').click();
+  $('#b4').click();
+  $('#c4').click();
+}
+*/
+function pieceClick(){
 
-
+}

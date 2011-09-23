@@ -51,6 +51,9 @@ socket.on('connect', function() {
         }
       }
     }
+
+    // Set Name
+    setUserName(data.first, data.second); 
     
     // TODO:どっちの手番かを取得して表示してね
     var currentTurn = data.turn;
@@ -83,11 +86,9 @@ function setEvent(){
   $('#login').click(login);
   $('#sitDownFirst').click(function(){
     sitDown('first');
-    $('#name_first').html('<p>' + loginName + '</p>');
   });
   $('#sitDownSecond').click(function(){
     sitDown('second');
-    $('#name_second').html('<p>' + loginName + '</p>');
   });
 
 } 
@@ -104,6 +105,16 @@ function login(){
 function sitDown(sitTurn){
   socket.emit('sitdown', {turn : sitTurn}); 
   hideSitDownButton();
+}
+
+function setUserName(first, second){
+  if(first){
+    $('#name_first').html('<p>' + first + '</p>');
+  }
+
+  if(second){
+    $('#name_second').html('<p>' + second + '</p>');
+  }
 }
 
 function hideSitDownButton(){
