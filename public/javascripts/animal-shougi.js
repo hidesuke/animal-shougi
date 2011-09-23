@@ -76,8 +76,10 @@ function pieceClick(event){
   case "elephant":
     break;
   case "chick":
+    hiChick(pieceId);
     break;
   case "pollo":
+    hiPollo(pieceId);
     break;
   default :
     break;
@@ -87,7 +89,7 @@ function pieceClick(event){
 
 function highLight(boardIndex){
   console.log('highLight:' + boardIndex);
-  $("#" + boardIndex).css('border-color', '#FF0000');
+  $(boardIndex).css('border-color', '#FF0000');
 }
 
 function hlLion(pieceId) {
@@ -177,6 +179,39 @@ function hlGiraffe(pieceId) {
     var tempId = co2id(candidates[i].x, candidates[i].y);
     $(tempId).css("border", "solid 4px red");
   }
+}
+
+function hiChick(pieceId) {
+  var coordinate = id2co(pieceId);  
+  var move; // 動き方
+  var candidates = [];
+  if(pieceOwner[coordinate.y][coordinate.x] == 1){ 
+    move = [[0,-1]];
+  }else if(pieceOwner[coordinate.y][coordinate.x] == 2){
+    move = [[0,1]];
+  }
+
+  // 自分自身のハイライト
+  highLight(pieceId);
+
+  // Check
+  for (var i = 0; i < move.length ; i++){
+    var m = move[i],
+        mx = coordinate.x + m[0],
+        my = coordinate.y + m[1];
+
+    if(mx < 0 || mx > 2 || my < 0 || my > 3){
+      continue;
+    }
+    
+    candidates.push({x : mx, y : my});
+  }
+
+  // 候補のセルをハイライト
+  for (var i = 0; i < candidates.length ; i++){
+    var tempId = co2id(candidates[i].x, candidates[i].y);
+    $(tempId).css("border", "solid 4px red");
+  } 
 }
 
 function id2co(tid) {
