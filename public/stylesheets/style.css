@@ -46,27 +46,28 @@ div#second_player_pane {
 
 .lion {
   background-color : #ff69b4;
-  background-image : url('/images/icon_lion.gif');
+  background-image : url('/images/lion.png');
   width : 100px;
   height : 100px;  
 }
 
 .giraffe {
   background-color : #9370db;
-  background-image : url('/images/icon_lion.gif');
+  background-image : url('/images/kirin.png');
   width : 100px;
   height : 100px;  
 }
 
 .elephant {
   background-color : #7b68ee;  
+  background-image : url('/images/zou.png');
   width : 100px;
   height : 100px;  
 }
 
 .chick {
   background-color : #98fb98;  
-  background-image: url('/images/icon_piyo.gif');
+  background-image: url('/images/hiyoko.png');
   width : 100px;
   height : 100px;  
 }
