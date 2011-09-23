@@ -81,6 +81,15 @@ function init(){
 // setEvent
 function setEvent(){
   $('#login').click(login);
+  $('#sitDownFirst').click(function(){
+    sitDown('first');
+    $('#name_first').html('<p>' + loginName + '</p>');
+  });
+  $('#sitDownSecond').click(function(){
+    sitDown('second');
+    $('#name_second').html('<p>' + loginName + '</p>');
+  });
+
 } 
 
 // login
@@ -91,3 +100,14 @@ function login(){
   }
   socket.emit('login', {name : loginName}); 
 }
+
+function sitDown(sitTurn){
+  socket.emit('sitdown', {turn : sitTurn}); 
+  hideSitDownButton();
+}
+
+function hideSitDownButton(){
+  $('#sitDownFirst').hide();
+  $('#sitDownSecond').hide();
+}
+
