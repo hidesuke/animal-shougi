@@ -54,7 +54,10 @@ var board = [
   [null, null, null]
 ];
 
-var turn = null;
+var turn = null,
+    firstPlayer  = null,
+    secondPlayer = null;
+
 
 // -------------------------------------------------------
 // WebSocket
@@ -71,11 +74,39 @@ io.sockets.on('connection', function(socket) {
     // Emit Board
     io.sockets.emit('board', {
       board : board,
-      turn : turn 
+      turn : turn,
+      first : firstPlayer,
+      second : secondPlayer 
     });
   });
-  socket.on('sitdown', function(){
+  
+  socket.on('sitdown', function(data) {
+    if(data.turn == 'first') {
+      socket.get('loginName', function(err, name) {
+        firstPlayer = name;
+      });
+    } else if (data.turn == 'second') {
+      socket.get('loginName', function(err, name) {
+        secondPalyer = name;
+      });
+    }
+    if (firstPlayer != null && secondPlayer != null) {
+      turn = 'first';
+      board = [
+        ['sG', 'sL', 'sE'],
+        [null, 'sC', null],
+        [null, 'fC', null],
+        ['fE', 'fL', 'fG'],
+      ];
+      io.sockets.emit('board', {
+        board : board,
+        turn : turn,
+        first : firstPlayer,
+        second : secondPlayer 
+      });
+    }
   });
+  
   socket.on('message_send', function(data) {
   });
   socket.on('turn', function(data) {
