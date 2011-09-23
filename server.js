@@ -88,7 +88,7 @@ io.sockets.on('connection', function(socket) {
       });
     } else if (data.turn == 'second') {
       socket.get('loginName', function(err, name) {
-        secondPalyer = name;
+        secondPlayer = name;
       });
     }
     if (firstPlayer != null && secondPlayer != null) {
@@ -99,17 +99,18 @@ io.sockets.on('connection', function(socket) {
         [null, 'fC', null],
         ['fE', 'fL', 'fG'],
       ];
-      io.sockets.emit('board', {
-        board : board,
-        turn : turn,
-        first : firstPlayer,
-        second : secondPlayer 
-      });
     }
+    io.sockets.emit('board', {
+      board  : board,
+      turn   : turn,
+      first  : firstPlayer,
+      second : secondPlayer 
+    });
   });
   
   socket.on('message_send', function(data) {
   });
+  
   socket.on('turn', function(data) {
     // TODO : boardのupdate
     var nextPlayer = data.turn === 'first' ? 'second' : 'first';
