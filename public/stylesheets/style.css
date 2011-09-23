@@ -46,12 +46,14 @@ div#second_player_pane {
 
 .lion {
   background-color : #ff69b4;
+  background-image : url('/images/icon_lion.gif');
   width : 100px;
   height : 100px;  
 }
 
 .giraffe {
-  background-color : #9370db;  
+  background-color : #9370db;
+  background-image : url('/images/icon_lion.gif');
   width : 100px;
   height : 100px;  
 }
@@ -64,6 +66,7 @@ div#second_player_pane {
 
 .chick {
   background-color : #98fb98;  
+  background-image: url('/images/icon_piyo.gif');
   width : 100px;
   height : 100px;  
 }
