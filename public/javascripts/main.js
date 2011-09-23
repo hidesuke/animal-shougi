@@ -10,6 +10,8 @@ var currentBoard;
 
 socket.on('connect', function() {
   socket.on('board', function(data){
+    $('article').css("display","block");
+    $('#login_form').css("display", "none");
     // 現在の盤面
     currentBoard = data.board;
 
@@ -18,7 +20,6 @@ socket.on('connect', function() {
 
     // Set Name
     setUserName(data.first, data.second); 
-    
     // TODO:どっちの手番かを取得して表示してね
     var currentTurn = data.turn;
   });
