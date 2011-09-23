@@ -122,8 +122,10 @@ function hlLion(pieceId) {
   }
   var len = candidates.length, i;
   for(i = 0; i < len; i++) {
-    var tempId = co2id(candidates[i].x, candidates[i].y);
-    $(tempId).css("border", "solid 4px red");
+    if ( pieceOwner[candidates[i].y][candidates[i].x] != myTurn) {
+      var tempId = co2id(candidates[i].x, candidates[i].y);
+      $(tempId).css("border", "solid 4px red");
+    }
   }
 }
 
@@ -155,8 +157,10 @@ function hlPollo(pieceId) {
 
   // 候補のセルをハイライト
   for (var i = 0; i < candidates.length ; i++){
-    var tempId = co2id(candidates[i].x, candidates[i].y);
-    $(tempId).css("border", "solid 4px red");
+    if ( pieceOwner[candidates[i].y][candidates[i].x] != myTurn) {
+      var tempId = co2id(candidates[i].x, candidates[i].y);
+      $(tempId).css("border", "solid 4px red");
+    }
   }  
 }
 
@@ -177,8 +181,10 @@ function hlGiraffe(pieceId) {
   }
   var len = candidates.length, i;
   for(i = 0; i < len; i++){
-    var tempId = co2id(candidates[i].x, candidates[i].y);
-    $(tempId).css("border", "solid 4px red");
+    if ( pieceOwner[candidates[i].y][candidates[i].x] != myTurn) {
+      var tempId = co2id(candidates[i].x, candidates[i].y);
+      $(tempId).css("border", "solid 4px red");
+    }
   }
 }
 
@@ -210,8 +216,10 @@ function hlChick(pieceId) {
 
   // 候補のセルをハイライト
   for (var i = 0; i < candidates.length ; i++){
-    var tempId = co2id(candidates[i].x, candidates[i].y);
-    $(tempId).css("border", "solid 4px red");
+    if ( pieceOwner[candidates[i].y][candidates[i].x] != myTurn) {
+      var tempId = co2id(candidates[i].x, candidates[i].y);
+      $(tempId).css("border", "solid 4px red");
+    }
   } 
 }
 function hlElephant(pieceId){
